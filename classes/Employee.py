@@ -4,6 +4,7 @@ Author: Rajiv Malhotra
 Last Modified Date: 11/25/2020
 
 Program contains the Person and Employee class. It also validates the attributes of an Employee.
+It also calculates the approx retirement balance for an employee.
 """
 
 import re
@@ -55,11 +56,13 @@ class Employee(Person):
     def age(self, value):
         try:
             age_int = int(value)
+        except:
+            raise ValueError("Age must be an integer")
+        else:
             if age_int < 15 or age_int > 75:
                 raise ValueError("Employee age must be between 15 and 75")
             self._age = age_int
-        except:
-            raise ValueError("Age must be an integer")
+
 
     @property
     def start_dt(self):
@@ -71,7 +74,7 @@ class Employee(Person):
         try:
             validate_start_dt = datetime.datetime.strptime(value, date_format)
         except:
-            raise ValueError("Incorrect data format, should be MM/DD/YYYY")
+            raise ValueError("Incorrect Start date, should be in MM/DD/YYYY format")
         else:
             self._start_dt = value
 
@@ -81,10 +84,11 @@ class Employee(Person):
 
     @contrib_pct.setter
     def contrib_pct(self, value):
-        value_float = float(value)
-        if not isinstance(value_float, float):
-            raise ValueError
-        self._contrib_pct = value
+        try:
+            value_float = float(value)
+            self._contrib_pct = value
+        except:
+            raise ValueError("Contribution percentage should be a decimal")
 
     @property
     def acct_balance(self):
@@ -92,10 +96,11 @@ class Employee(Person):
 
     @acct_balance.setter
     def acct_balance(self, value):
-        value_float = float(value)
-        if not isinstance(value_float, float):
-            raise ValueError
-        self._acct_balance = value
+        try:
+            value_float = float(value)
+            self._acct_balance = value
+        except:
+            raise ValueError("Account Balance should be a decimal")
 
     def calculate_retirement_balance(self):
         """
@@ -115,7 +120,7 @@ class Employee(Person):
 # drivers
 """
 try:
-    emp1 = Employee("123-45-6789","Rajiv","Malhotra",46,'12/01/2011',8.0,125000.00)
+    emp1 = Employee("123-45-6789","Rajiv","Malhotra",39,'12/01/2011',8.0,125000.00)
     print(emp1.display())
     print(emp1.calculate_retirement_balance())
 except ValueError as err:

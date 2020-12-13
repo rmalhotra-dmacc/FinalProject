@@ -3,7 +3,7 @@ Program: dbms_connector.py
 Author: Rajiv Malhotra
 Last Modified Date: 11/25/2020
 
-Program to create DB and Employee table. It also have code to select & delete one or all employee records
+Program to create DB and Employee table. It also has code to select & delete one or all employee records
 """
 
 import sqlite3

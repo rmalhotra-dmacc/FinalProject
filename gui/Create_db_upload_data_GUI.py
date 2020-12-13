@@ -43,6 +43,9 @@ class create_db_upload_data_GUI:
         buttonexample2.pack(side=tkinter.LEFT)
 
     def view_employee(self):
+        """
+        This function will select all employees from DB and display them
+        """
         rows = db.select_all_employees(self.conn)
         text = ""
         for row in rows:
@@ -62,12 +65,18 @@ class create_db_upload_data_GUI:
         fontStyle.configure(size=fontsize-2)
 
     def create_table(self):
+        """
+        This function will create the Employee401K database
+        """
         os.chdir('../dbms')
         conn = db.create_connection("Employee401K.db")  # Create DB Connection
         db.create_tables("Employee401K.db")  # Create DB tables
         self.l_table_data.configure(text="Table Creation Completed Successfully!", foreground="red")
 
     def upload_from_file(self):
+        """
+        This function will call the upload_employee_data_from_file to create employee records.
+        """
         os.chdir('../dbms')
         conn = db.create_connection("Employee401K.db")  # Create DB Connection
         clear_table = db.delete_all_employees(self.conn)  # Delete all records from Employee table before loading

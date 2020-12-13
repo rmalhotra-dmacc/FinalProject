@@ -3,7 +3,7 @@ Program: Show_retirement_balance_GUI.py
 Author: Rajiv Malhotra
 Last Modified Date: 11/25/2020
 
-GUI to display total account balance at retirement
+GUI to display Employee record details including total account balance at retirement.
 """
 
 import tkinter
@@ -54,6 +54,9 @@ class show_retirement_acct_balance_GUI:
         buttonexample2.pack(side=tkinter.LEFT)
 
     def show_employee_record(self):
+        """
+        Function will show the employee record details
+        """
         employee_ssn = (self.e_ssn.get())
         if employee_ssn == "":
             self.l_table_data.configure(text="Employee SSN can not be empty", foreground="red")
@@ -71,6 +74,9 @@ class show_retirement_acct_balance_GUI:
                 self.l_table_data.configure(text=text, foreground="blue")
 
     def calculate_retirement_bal(self):
+        """
+        Function will show the approx employee account balance at retirement
+        """
         employee_ssn = (self.e_ssn.get())
         if self.valid_employee != True:
             self.l_retirement_bal_data.configure(text="Employee record incorrect or not found", foreground="red")

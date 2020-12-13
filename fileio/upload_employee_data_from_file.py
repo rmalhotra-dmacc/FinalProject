@@ -3,7 +3,7 @@ Program: upload_employee_data_from_file.py
 Author: Rajiv Malhotra
 Last Modified Date: 11/25/2020
 
-Program reads from a file and populates the Employee database table
+Program reads from a file and populates the Employee database table. Any invalid records are written to Employee_Errors.txt file
 """
 
 import os
